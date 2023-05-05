@@ -1,0 +1,15 @@
+.main {
+    /* background-color: rgb(219, 81, 81); */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+    justify-content: center;
+    align-items: center;
+}
+#title-search {
+    background-image: url('../../assets/bgc4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8rem;
+    box-shadow: inset 0px 0px 10px 3px black
+}

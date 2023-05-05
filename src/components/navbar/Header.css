@@ -1,0 +1,38 @@
+.header{
+    background-color: rgb(230, 228, 228);
+    height: "80px"  
+}
+#login-btn{
+    /* background-color: red; */
+}
+
+#avatar-link{
+    margin-left: 65px;
+}
+
+@media (max-width:500px) {
+   .header{
+    font-size: 10;
+    margin-left: 0;
+   }
+  #login-btn{
+    /* background-color:blue; */
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+    font-weight: 600;
+   }
+   #sign-btn{
+    /* background-color:blue; */
+    font-size:12px;
+    width: 50px;
+    height: 20px;
+    font-weight: 600;
+   }
+   #avatar-link{
+    margin-left: 0;
+   }
+   #cart-icon{
+    margin-right: 20px;
+   }
+}
