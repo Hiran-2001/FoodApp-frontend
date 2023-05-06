@@ -48,7 +48,7 @@ function Profile() {
 
   const userValidate = async () => {
     const token = localStorage.getItem("usertoken");
-    const res = await axios.get("http://localhost:4000/api/v1/validate_user", {
+    const res = await axios.get("https://bloodyspice-api.onrender.com/api/v1/validate_user", {
       headers: { Authorization: token },
     });
 
@@ -113,7 +113,7 @@ function Profile() {
     // console.log(user);
     axios
       .put(
-        `http://localhost:4000/api/v1/image_upload/${id}`,
+        `https://bloodyspice-api.onrender.com/api/v1/image_upload/${id}`,
 
         { image: proImg },
         {

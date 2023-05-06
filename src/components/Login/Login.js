@@ -52,7 +52,7 @@ function Login() {
       alert("password must be 8 characters");
       // <Alert severity="error">password must be 8 characters</Alert>
     } else {
-      const res = await axios.post("http://localhost:4000/api/v1/login", {
+      const res = await axios.post("https://bloodyspice-api.onrender.com/api/v1/login", {
         email,
         password,
       });
