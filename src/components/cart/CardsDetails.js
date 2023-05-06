@@ -73,7 +73,7 @@ function CardsDetails() {
                           </p>
                           <p>
                             <strong>Dishes</strong> : {ele.address}
-                            Mughalai
+                           
                           </p>
                           <p>
                             <strong>Total</strong> : ₹{" "}

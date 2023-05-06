@@ -27,6 +27,7 @@ function Header() {
   const [price, setPrice] = useState(0);
   const dispatch = useDispatch();
 
+
   const removeCart = (id) => {
     dispatch(removeFromCart(id));
   };
@@ -129,10 +130,10 @@ function Header() {
                   <th>Restarant Name</th>
                 </thead>
                 <tbody>
-                  {products.map((e) => {
+                  {products.map((e,key) => {
                     return (
                       <>
-                        <tr>
+                        <tr key={key}>
                           <td>
                             <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
                               <img
@@ -162,7 +163,7 @@ function Header() {
                       </>
                     );
                   })}
-                  <p className=" text-center pt-3">Total : ₹ {price}</p>
+                  <p style={{color:"black"}} className="text-center pt-3">Total : ₹ {price} </p>
                 </tbody>
               </Table>
             </div>

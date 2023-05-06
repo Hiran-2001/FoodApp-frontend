@@ -70,6 +70,8 @@ function Login() {
             password: "",
 
           });
+        }else{
+          alert(res.data)
         }
         console.log(res);
 
