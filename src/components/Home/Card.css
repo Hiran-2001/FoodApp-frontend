@@ -11,5 +11,23 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 8rem;
-    box-shadow: inset 0px 0px 10px 3px black
+    box-shadow: inset 0px 0px 10px 3px black;
+    object-fit: contain;
+    height: 25rem; 
+}
+.text-center{
+    /* margin-top: 4rem; */
+     color: white;
+}
+
+@media (max-width:480px){
+    #title-search {
+        background-image: url('../../assets/bgc4.png');
+        /* background-repeat: no-repeat; */
+        background-size: cover;
+        padding-top: 8rem;
+        box-shadow: inset 0px 0px 10px 3px black;
+        object-fit: contain;
+        height: 20rem 
+    }
 }

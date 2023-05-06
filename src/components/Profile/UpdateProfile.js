@@ -41,7 +41,7 @@ function UpdateProfile() {
     } else if (address === "") {
       alert("please enter your address");
     } else {
-      const res = await axios.patch(`/api/v1/update/user/${id}`, {
+      const res = await axios.patch(`https://bloodyspice-api.onrender.com/api/v1/update/user/${id}`, {
         name,
         phoneNumber,
         email,

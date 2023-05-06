@@ -13,10 +13,34 @@ function Profile() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
   const [proImg, setProImg] = useState("");
+  const [userImage, setUserImage] = useState("");
+
+  // console.log(userImage);
+  // console.log(proImg);
+
 
   const setFileImg = (e) => {
-    setProImg(e.target.files[0]);
+    const file = e.target.files[0];
+    console.log(file);
+    TransFormFile(file)
+    // setFileToBase(file)
+    // setProImg(e.target.files[0]);
   };
+
+  const TransFormFile = (file) => {
+
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setProImg(reader.result)
+      };
+    } else {
+      setProImg("")
+    }
+  }
+
 
   // console.log(proImg);
 
@@ -24,16 +48,18 @@ function Profile() {
 
   const userValidate = async () => {
     const token = localStorage.getItem("usertoken");
-    const res = await axios.get("/api/v1/validate_user", {
+    const res = await axios.get("http://localhost:4000/api/v1/validate_user", {
       headers: { Authorization: token },
     });
 
     if (res.status !== 201 || !res) {
       navigate("*");
     } else {
-      navigate("/profile");
       setUser(res.data.validateUser);
-      
+      setUserImage(res.data.validateUser.userImage.url)
+      navigate("/profile");
+      // console.log(res);
+
     }
   };
 
@@ -42,7 +68,7 @@ function Profile() {
 
   const logoutUser = async () => {
     const token = localStorage.getItem("usertoken");
-    const res = await axios.get("/api/v1/logout_user", {
+    const res = await axios.get("https://bloodyspice-api.onrender.com/api/v1/logout_user", {
       headers: { Authorization: token },
       credentials: "include",
     });
@@ -61,7 +87,7 @@ function Profile() {
   const deleteAccount = async () => {
     const id = user._id;
     try {
-      const res = await axios.delete(`/api/v1/delete/user/${id}`);
+      const res = await axios.delete(`https://bloodyspice-api.onrender.com/api/v1/delete/user/${id}`);
       if (res.status === 201) {
         console.log("user has been deleted");
         navigate("/home");
@@ -74,22 +100,22 @@ function Profile() {
 
   //add user image\
 
- 
+
 
   // adding image
 
-  const addImage = async (e) => {
+  const addImage = async () => {
     const id = user._id;
-    e.preventDefault();
-    const token = localStorage.getItem("usertoken");
-    const formData = new FormData();
-    formData.append("image", proImg);
 
+    const token = localStorage.getItem("usertoken");
+    // const formData = new FormData();
+    // formData.append("image", proImg);
+    // console.log(user);
     axios
       .put(
-        `/api/v1/image_upload/${id}`,
+        `http://localhost:4000/api/v1/image_upload/${id}`,
 
-        formData,
+        { image: proImg },
         {
           headers: { Authorization: token },
         }
@@ -121,7 +147,7 @@ function Profile() {
           >
             <Card.Img
               variant="top"
-              src={user.userImage}
+              src={userImage}
               id="profile_image"
             />
             <button
@@ -325,14 +351,8 @@ function Profile() {
               {/* password change button  */}
 
               <button
-                style={{
-                  border: "none",
-                  backgroundColor: "whitesmoke",
-                  borderRadius: "6px",
-                  fontSize: "1rem",
-                  marginLeft: "17rem",
-                  marginTop: "3rem",
-                }}
+                id="change_password"
+               
               >
                 Change Password
                 <FaLock

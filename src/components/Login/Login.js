@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"
 import axios from "axios";
 // import { Alert } from '@mui/material';
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import { baseUrl } from '../../assets/baseUrl';
 
 
 function Login() {
@@ -51,11 +52,11 @@ function Login() {
       alert("password must be 8 characters");
       // <Alert severity="error">password must be 8 characters</Alert>
     } else {
-      const res = await axios.post("/api/v1/login", {
+      const res = await axios.post("http://localhost:4000/api/v1/login", {
         email,
         password,
       });
-      // alert("user Login successfully");
+      alert("user Login successfully");
       enqueueSnackbar('This is a success message!', { variant});
 
       try {

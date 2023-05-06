@@ -28,7 +28,7 @@ function CardsDetails() {
 
   useEffect(() => {
     compareData();
-  });
+  },[]);
 
   console.log(products);
 

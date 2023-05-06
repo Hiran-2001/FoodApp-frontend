@@ -51,7 +51,7 @@ function Register() {
     } else if (password !== confirmPassword) {
       alert("password and confirm password doesnt match");
     } else {
-      const res = await axios.post("/api/v1/register", {
+      const res = await axios.post("https://bloodyspice-api.onrender.com/api/v1/register", {
         name,
         email,
         password,

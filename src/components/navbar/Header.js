@@ -31,7 +31,7 @@ function Header() {
     dispatch(removeFromCart(id));
   };
 
-  console.log(products);
+  // console.log(products);
 
   const total = () => {
     let price = 0;

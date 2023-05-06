@@ -27,9 +27,9 @@ function Cards() {
   }, []);
   return (
     <div id="card-main" style={{ backgroundColor: "white" }}>
-      <div id="title-search" style={{ height: "25rem" }}>
+      <div id="title-search" >
         <h2
-          style={{ marginTop: "4rem", color: "white" }}
+          
           className="text-center"
         >
           Taste It
