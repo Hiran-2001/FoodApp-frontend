@@ -1,0 +1,21 @@
+.food-form-container {
+    /* background-image: url("../../assets/bg-img.jpg"); */
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: center;
+    color: white;
+  
+  }
+  .price {
+    display: flex;
+    /* background-color: rgb(106, 43, 43); */
+  }
+
+  .foodFormControl {
+    width: 20rem;
+    margin: 20px 30px;
+    color: white;
+  }

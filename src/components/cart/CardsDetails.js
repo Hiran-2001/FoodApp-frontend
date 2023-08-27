@@ -13,6 +13,7 @@ function CardsDetails() {
   const [data, setData] = useState([]);
   const products = useSelector((store) => store.cart.products);
   // console.log(getData);
+  const [refresh,setRefresh] =useState()
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function CardsDetails() {
 
   useEffect(() => {
     compareData();
-  },[]);
+  }, [refresh]);
 
   console.log(products);
 
@@ -39,10 +40,14 @@ function CardsDetails() {
 
   const dczQnt = (id) => {
     dispatch(decreaseQnty(id));
+    setRefresh("decrease")
+
   };
 
   const incQnt = (id) => {
     dispatch(increaseQnty(id));
+    setRefresh("increase")
+
   };
   console.log();
   return (
@@ -73,7 +78,7 @@ function CardsDetails() {
                           </p>
                           <p>
                             <strong>Dishes</strong> : {ele.address}
-                           
+
                           </p>
                           <p>
                             <strong>Total</strong> : ₹{" "}
@@ -127,18 +132,19 @@ function CardsDetails() {
                         marginBottom: 30,
                         display: "flex",
                         justifyContent: "space-around",
+                        // backgroundColor:"green"
                       }}
                     >
                       <div
                         id="counter"
                         className=" primary mt-3 d-flex justify-content-between align-item-center"
                         style={{
-                          width: 100,
-                          height: 40,
+                          width: 120,
+                          height: 50,
                           color: "white",
-                          backgroundColor: "#0d6efd ",
+                          backgroundColor: "#0d6efd",
                           cursor: "pointer",
-                          borderRadius: "20px",
+                          borderRadius: "10px",
                         }}
                       >
                         <button
@@ -147,9 +153,10 @@ function CardsDetails() {
                             border: "none",
                             backgroundColor: "#0d6efd ",
                             // backgroundColor:"Red",
-                            borderRadius: "15px 0px 0px 15px",
+                            borderRadius: "10px 10px 10px 10px",
                             display: "flex",
                             alignItems: "center",
+                            padding:10
                           }}
                           onClick={() => dczQnt(ele.id)}
                         >
@@ -162,10 +169,10 @@ function CardsDetails() {
                           style={{
                             fontSize: 24,
                             border: "none",
-                            backgroundColor: "#0d6efd ",
+                            backgroundColor: "#0d6efd",
                             display: "flex",
                             alignItems: "center",
-                            borderRadius: "20px",
+                            borderRadius: "10px",
                           }}
                           onClick={() => {
                             incQnt(ele.id);
@@ -179,9 +186,9 @@ function CardsDetails() {
                         id="counter"
                         className=" primary mt-3 d-flex justify-content-between align-item-center"
                         style={{
-                          width: 100,
+                          width: 120,
                           color: "white",
-                          backgroundColor: "#0d6efd ",
+                          backgroundColor: "white",
                           cursor: "pointer",
                           borderRadius: "20px",
                           marginTop: "20px",
@@ -189,16 +196,16 @@ function CardsDetails() {
                       >
                         <button
                           style={{
-                            fontSize: 14,
+                            fontSize: 18,
                             border: "none",
                             backgroundColor: "#0d6efd",
                             color: "white",
-                            borderRadius: "20px",
-                            textAlign: "center",
-                            paddingLeft: 12,
+                            borderRadius: "10px",
+
+                            padding: 10,
                           }}
                         >
-                          Place Order
+                          Checkout
                         </button>
                       </div>
                     </div>

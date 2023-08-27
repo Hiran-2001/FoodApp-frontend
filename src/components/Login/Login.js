@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./Login.css"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import axios from "axios";
-// import { Alert } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';// import { Alert } from '@mui/material';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import { baseUrl } from '../../assets/baseUrl';
 
-
 function Login() {
+  const [loader, setLoader] = useState(false)
   const navigate = useNavigate()
   const [showPass, setShowPass] = useState(false)
   const [inputValue, setInputValue] = useState({
@@ -19,7 +19,7 @@ function Login() {
   });
 
   const { enqueueSnackbar } = useSnackbar();
- const variant = 'success'
+  const variant = 'success'
   // console.log(inputValue);
 
 
@@ -56,9 +56,9 @@ function Login() {
         email,
         password,
       });
-      alert("user Login successfully");
-      enqueueSnackbar('This is a success message!', { variant});
-
+      // alert("user Login successfully");
+      // enqueueSnackbar('This is a success message!', { variant});
+      setLoader(true)
       try {
         if (res.status === 201) {
           localStorage.setItem("usertoken", res.data.token)
@@ -70,7 +70,8 @@ function Login() {
             password: "",
 
           });
-        }else{
+          setLoader(false)
+        } else {
           alert(res.data)
         }
         console.log(res);
@@ -112,7 +113,8 @@ function Login() {
 
 
             <Button onClick={loginUser} className='form-btn' type="submit">
-              Login
+            {loader ? <CircularProgress /> : "Login"}
+            
             </Button>
 
             <div className="sign-to-login">

@@ -10,6 +10,7 @@ import Profile from "./components/Profile/Profile";
 
 import Error from "./components/Error";
 import UpdateProfile from "./components/Profile/UpdateProfile";
+import AddFoods from "./components/admin/addFoods/AddFoods";
 
 // import axios from "axios"
 // import { useEffect } from "react";
@@ -36,6 +37,7 @@ function App() {
         <Route path="/signin" element={<Register/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/profile/update/:id" element={<UpdateProfile/>} />
+        <Route path="/admin/create-food" element={<AddFoods/>} />
         <Route path="*" element={<Error/>} />
       </Routes>
   

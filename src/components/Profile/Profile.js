@@ -51,6 +51,7 @@ function Profile() {
     const res = await axios.get("https://bloodyspice-api.onrender.com/api/v1/validate_user", {
       headers: { Authorization: token },
     });
+    
 
     if (res.status !== 201 || !res) {
       navigate("*");
